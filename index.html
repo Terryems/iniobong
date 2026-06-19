@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Professional Business Card</title>
+    <!-- PWA: manifest and theme color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#11ac1b">
+    <!-- iOS support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192.svg">
+    <link rel="icon" href="icons/icon-192.svg" sizes="192x192">
     <style>
         * {
             margin: 0;
@@ -223,10 +231,12 @@
     </style>
 </head>
 <body>
+    <!-- Install button (will be shown on supporting browsers) -->
+    <button id="installBtn" class="install-btn" hidden aria-hidden="true">Install app</button>
     <div class="business-card">
         <!-- Left side with image -->
         <div class="card-left">
-            <img src="director.jpg" alt="Profile Photo">
+            <!-- <img src="director.jpg" alt="Profile Photo"> -->
             <div class="card-left-info">
                 <h3>Dr. Iniobong Abiola-Awe  </h3>
                 <p>Director,<br> Head, Department of Climate Change</p>
@@ -273,5 +283,68 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(reg) {
+                    console.log('Service worker registered.', reg);
+                }).catch(function(err) {
+                    console.warn('Service worker registration failed:', err);
+                });
+            });
+        }
+
+        // Handle beforeinstallprompt to show custom install UI
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show the install button
+            installBtn.hidden = false;
+            installBtn.setAttribute('aria-hidden', 'false');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            installBtn.hidden = true;
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('User response to the install prompt:', outcome);
+            deferredPrompt = null;
+        });
+
+        // Optional: listen for appinstalled
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('PWA was installed', evt);
+        });
+    </script>
+
+    <style>
+        /* Install button styling */
+        .install-btn {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 9999;
+            background: #11ac1b;
+            color: #fff;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .install-btn:active { transform: translateY(1px); }
+    </style>
 </body>
 </html>
