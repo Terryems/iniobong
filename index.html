@@ -164,6 +164,19 @@
             border: 0;
         }
 
+        /* Brand / real colors for contact icons */
+        .icon-linkedin { color: #0077B5; }
+        .icon-email    { color: #D44638; }
+        .icon-phone    { color: #28A745; }
+        .icon-address  { color: #E76F51; }
+        .icon-website  { color: #0D6EFD; }
+
+        /* Slight hover effect for icons */
+        .contact-item .label i:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
 
         /* Print styles */
         @media print {
@@ -217,6 +230,7 @@
             <div class="card-left-info">
                 <h3>Dr. Iniobong Abiola-Awe  </h3>
                 <p>Director,<br> Head, Department of Climate Change</p>
+                <h3>Federal Ministry of Environment</h3>
             </div>
         </div>
 
@@ -228,31 +242,31 @@
 
             <div class="contact-info">
                 <div class="contact-item">
-                    <span class="label" aria-hidden="true"><i class="bi bi-linkedin"></i></span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-linkedin icon-linkedin"></i></span>
                     <span class="sr-only">LinkedIn</span>
                     <span class="value"><a href="https://linkedin.com/in/iniabiolawe" target="_blank">linkedin.com/in/iniabiolawe</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label" aria-hidden="true"><i class="bi bi-envelope"></i></span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-envelope icon-email"></i></span>
                     <span class="sr-only">Email</span>
                     <span class="value"><a href="mailto:iniabiolawe@yahoo.co.uk">iniabiolawe@yahoo.co.uk</a><br><a href="mailto:Iniobongabiola.awe@environment.gov.ng">Iniobongabiola.awe@environment.gov.ng</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label" aria-hidden="true"><i class="bi bi-telephone"></i></span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-telephone icon-phone"></i></span>
                     <span class="sr-only">Phone</span>
                     <span class="value"><a href="tel:+2348034452959">+234 803 445 2959</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-geo-alt icon-address"></i></span>
                     <span class="sr-only">Address</span>
                     <span class="value">Plot 444, Aguyi Ironsi Street, Green Building, Maitama, Abuja.</span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label" aria-hidden="true"><i class="bi bi-globe2"></i></span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-globe2 icon-website"></i></span>
                     <span class="sr-only">Website</span>
                     <span class="value"><a href="https://climatechange.environment.gov.ng/" target="_blank">climatechange.environment.gov.ng</a></span>
                 </div>
