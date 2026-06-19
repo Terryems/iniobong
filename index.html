@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Professional Business Card</title>
     <style>
         * {
@@ -118,7 +119,11 @@
         .contact-item .label {
             font-weight: 600;
             color: #ea6666;
-            min-width: 80px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
         .contact-item .value {
@@ -144,6 +149,19 @@
             margin-left: 8px;
             font-weight: 600;
             text-decoration: none;
+        }
+
+        /* accessibility helper for screen-reader-only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
 
@@ -210,27 +228,32 @@
 
             <div class="contact-info">
                 <div class="contact-item">
-                    <span class="label">LinkedIn:</span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-linkedin"></i></span>
+                    <span class="sr-only">LinkedIn</span>
                     <span class="value"><a href="https://linkedin.com/in/iniabiolawe" target="_blank">linkedin.com/in/iniabiolawe</a></span>
                 </div>
 
-                 <div class="contact-item">
-                    <span class="label">Email:</span>
-                    <span class="value"><a href="mailto:iniabiolawe@yahoo.co.uk">iniabiolawe@yahoo.co.uk <br>Iniobongabiola.awe@environment.gov.ng</a></span>
+                <div class="contact-item">
+                    <span class="label" aria-hidden="true"><i class="bi bi-envelope"></i></span>
+                    <span class="sr-only">Email</span>
+                    <span class="value"><a href="mailto:iniabiolawe@yahoo.co.uk">iniabiolawe@yahoo.co.uk</a><br><a href="mailto:Iniobongabiola.awe@environment.gov.ng">Iniobongabiola.awe@environment.gov.ng</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label">Phone:</span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-telephone"></i></span>
+                    <span class="sr-only">Phone</span>
                     <span class="value"><a href="tel:+2348034452959">+234 803 445 2959</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label">Address:</span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
+                    <span class="sr-only">Address</span>
                     <span class="value">Plot 444, Aguyi Ironsi Street, Green Building, Maitama, Abuja.</span>
                 </div>
 
                 <div class="contact-item">
-                    <span class="label">Website:</span>
+                    <span class="label" aria-hidden="true"><i class="bi bi-globe2"></i></span>
+                    <span class="sr-only">Website</span>
                     <span class="value"><a href="https://climatechange.environment.gov.ng/" target="_blank">climatechange.environment.gov.ng</a></span>
                 </div>
             </div>
